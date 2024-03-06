@@ -8,6 +8,7 @@ import { messageStore } from "@/mobx/messageStore"
 import { updateImageApi } from "@/db/image/updateImage"
 import userStore from "@/mobx/userStore"
 import { deleteImageApi } from "@/db/image/deleteImage"
+import Modal from "."
 
 const ImageEditModal = observer(() => {
   const [image, setImage] = useState<ImageItem>({
@@ -58,73 +59,56 @@ const ImageEditModal = observer(() => {
   }
 
   return (
-    <div
-      className="modal-first-div"
-      onClick={(e: any) => {
-        ModalStore.closeModal()
-      }}
-    >
-      <div
-        className="absolute top-5 right-5 cursor-pointer p-2 "
-        onClick={() => ModalStore.closeModal()}
-      >
-        <IoMdClose size={25} />
-      </div>
-      {/* white div */}
-      <div
-        className="modal-second-div w-[80vw] h-[80vh]"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* innedr div */}
-        <div className=" w-1/2 h-full flex flex-col justify-center  ">
-          <div
-            style={{ backgroundImage: `url(${chosenImage?.url})` }}
-            className={`w-full h-1/2 bg-center bg-cover rounded-lg`}
+    <Modal>
+      {/* innedr div */}
+      <div className="w-full h-full flex flex-col justify-center  ">
+        <div
+          style={{ backgroundImage: `url(${chosenImage?.url})` }}
+          className={`w-full h-1/2 bg-center bg-cover rounded-lg`}
+        />
+        {/* inpus */}
+        <div className="flex flex-col">
+          <input
+            type="text"
+            value={image?.name}
+            placeholder="Enter name"
+            name="name"
+            onChange={handleImage}
+            className="border-2 p-1 rounded-md"
           />
-          {/* inpus */}
-          <div className="flex flex-col">
-            <input
-              type="text"
-              value={image?.name}
-              placeholder="Enter name"
-              name="name"
-              onChange={handleImage}
-              className="border-2 p-1 rounded-md"
-            />
-            <input
-              type="text"
-              value={image?.description}
-              placeholder="Enter description"
-              name="description"
-              onChange={handleImage}
-              className="border-2 p-1 rounded-md"
-            />
-            <input
-              type="number"
-              value={image?.price}
-              placeholder="Enter price"
-              name="price"
-              onChange={handleImage}
-              className="border-2 p-1 rounded-md"
-            />
-          </div>
-          <div className="flex justify-center items-center mt-10 gap-5 text-white">
-            <button
-              onClick={deleteImage}
-              className="basic-button bg-red-500 hover:bg-red-400"
-            >
-              Delete
-            </button>
-            <button
-              onClick={updateImage}
-              className="basic-button bg-blue-500 hover:bg-blue-400 "
-            >
-              Update
-            </button>
-          </div>
+          <input
+            type="text"
+            value={image?.description}
+            placeholder="Enter description"
+            name="description"
+            onChange={handleImage}
+            className="border-2 p-1 rounded-md"
+          />
+          <input
+            type="number"
+            value={image?.price}
+            placeholder="Enter price"
+            name="price"
+            onChange={handleImage}
+            className="border-2 p-1 rounded-md"
+          />
+        </div>
+        <div className="flex justify-center items-center mt-10 gap-5 text-white">
+          <button
+            onClick={deleteImage}
+            className="basic-button bg-red-500 hover:bg-red-400"
+          >
+            Delete
+          </button>
+          <button
+            onClick={updateImage}
+            className="basic-button bg-blue-500 hover:bg-blue-400 "
+          >
+            Update
+          </button>
         </div>
       </div>
-    </div>
+    </Modal>
   )
 })
 

@@ -14,6 +14,7 @@ const DeleteImage = observer(() => {
     <div>
       <TopNav />
       <div>
+        <div className="text-xl font-semibold mb-10">choose image</div>
         <Gallery withEdit={true} />
       </div>
     </div>

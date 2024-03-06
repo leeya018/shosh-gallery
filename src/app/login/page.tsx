@@ -35,7 +35,7 @@ const loginPage = observer(() => {
         if (!user) {
           throw new Error("you are not in the system")
         }
-        router.push(navNames.edit)
+        router.push(navNames.home)
       })
       .catch((err) => {
         console.log(err.message)
@@ -50,7 +50,11 @@ const loginPage = observer(() => {
    overflow-hidden bg-[#F3F3F7]"
     >
       <div className="w-[80%] h-[80vh]  bg-white flex items-center  justify-between  rounded-xl shadow-xl p-3">
-        <div className="relative flex flex-col  items-center justify-center h-full w-[90%] md:w-[50%] lg:w-[30%] ">
+        {/* login section */}
+        <div
+          className="relative flex flex-col w-[40%] 
+          items-center justify-center h-full "
+        >
           {/* title */}
           <div className="absolute top-1 left-1 text-lg font-bold text-left w-full p-2">
             Shosh Gallery
@@ -84,10 +88,10 @@ const loginPage = observer(() => {
             <Alert />
           </div>
         </div>
-
+        {/* image */}
         <div
-          className="hidden bg-login_image h-full w-[60%] rounded-xl
-         shadow-lg  items-center justify-center  sm:flex  "
+          className="hidden bg-gallery h-full  rounded-xl flex-1
+         shadow-lg  items-center justify-center bg-center bg-cover  sm:flex  "
         >
           <div className="text-white font-bold text-5xl rotate-12">
             Shosh Gallery

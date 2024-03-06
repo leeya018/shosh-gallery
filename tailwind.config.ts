@@ -9,6 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        gallery: "url('/images/gallery.png')",
+        google: "url('/images/google.png')",
         mom: "url('/images/mom.png')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

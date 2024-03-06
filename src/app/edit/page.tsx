@@ -23,28 +23,34 @@ const EditGalleryPage = observer(() => {
     <ProtectedRoute>
       <div className="top-div-page">
         <Alert />
-        {/* button choose  */}
+
         {ModalStore.modalName === modals.editImage && <ImageEditModal />}
-        <div className="flex items-center ">
-          <button
-            className={`basic-button rounded-l-full   ${
-              choice === "add" ? "bg-pink-500 z-10" : "bg-gray-500"
-            }`}
-            onClick={() => handleClick("add")}
-          >
-            add
-          </button>
-          <button
-            className={`basic-button relative rounded-r-full -translate-x-6 ${
-              choice === "delete" ? "bg-pink-500 z-10" : "bg-gray-500"
-            }`}
-            onClick={() => handleClick("delete")}
-          >
-            del
-          </button>
+        <div className="flex justify-center">
+          {/* inner div */}
+          <div className="flex flex-col justify-center w-[50%]">
+            {/* button decisions */}
+            <div className="flex items-center ">
+              <button
+                className={`basic-button rounded-l-full   ${
+                  choice === "add" ? "bg-pink-500 z-10" : "bg-gray-500"
+                }`}
+                onClick={() => handleClick("add")}
+              >
+                add
+              </button>
+              <button
+                className={`basic-button relative rounded-r-full -translate-x-6 ${
+                  choice === "update" ? "bg-pink-500 z-10" : "bg-gray-500"
+                }`}
+                onClick={() => handleClick("update")}
+              >
+                update
+              </button>
+            </div>
+            {choice === "add" && <AddImage />}
+            {choice === "update" && <DeleteImage />}
+          </div>
         </div>
-        {choice === "add" && <AddImage />}
-        {choice === "delete" && <DeleteImage />}
       </div>
     </ProtectedRoute>
   )

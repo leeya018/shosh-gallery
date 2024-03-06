@@ -20,12 +20,12 @@ const Gallery = observer<GalleryProps>(({ withEdit = false }) => {
 
   if (imagesStore.images.length === 0)
     return (
-      <div className="mx-auto  flex justify-center pt-20">
+      <div className="mx-auto  flex justify-center">
         <div>List is Empty</div>
       </div>
     )
   return (
-    <div className="mx-auto  flex justify-center pt-20">
+    <div className="mx-auto  flex justify-center">
       <ul className="flex flex-wrap gap-2  justify-center">
         {imagesStore.images.map((image, key) => (
           <li
