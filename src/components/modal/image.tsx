@@ -22,7 +22,10 @@ const ImageModal = observer(() => {
       </div>
 
       {/* white div */}
-      <div className="modal-second-div w-[80vw] h-[80vh]">
+      <div
+        className="modal-second-div w-[80vw] h-[80vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* innedr div */}
         <div className=" w-1/2 h-full flex flex-col justify-center  ">
           <div

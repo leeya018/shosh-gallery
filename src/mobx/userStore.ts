@@ -1,3 +1,4 @@
+import { auth } from "@/firebase"
 import { autorun, makeAutoObservable, toJS } from "mobx"
 
 class UserS {

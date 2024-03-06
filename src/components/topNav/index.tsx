@@ -1,15 +1,31 @@
 import { auth } from "@/firebase"
 import userStore from "@/mobx/userStore"
-import { signOut } from "firebase/auth"
+import { onAuthStateChanged, signOut } from "firebase/auth"
 import { observer } from "mobx-react-lite"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { FaFire } from "react-icons/fa"
 import { navNames } from "../../../util"
 
 const TopNav = observer(() => {
+  const [currentUser, setCurrentUser] = useState<any>(null)
   const router = useRouter()
+  console.log(currentUser)
+  useEffect(() => {
+    const unSub = onAuthStateChanged(auth, (user) => {
+      console.log(user)
+      if (user) {
+        setCurrentUser(user)
+      } else {
+        setCurrentUser(null)
+
+        router.push(navNames.login)
+      }
+    })
+
+    return () => unSub()
+  }, [router])
 
   const logout = async () => {
     try {
@@ -33,24 +49,28 @@ const TopNav = observer(() => {
         <li className="nav-item " onClick={() => router.push(navNames.about)}>
           about
         </li>
-        <li className="nav-item " onClick={() => router.push(navNames.edit)}>
-          edit
-        </li>
-        <li className="ml-auto">
-          {" "}
-          <div className="flex items-center gap-2 justify-between">
-            <Image
-              className="rounded-full"
-              src={userStore.user?.photoURL}
-              width={50}
-              height={50}
-              alt="Profile image"
-            />
-            <div className="nav-item" onClick={logout}>
-              logout
+        {currentUser && (
+          <li className="nav-item " onClick={() => router.push(navNames.edit)}>
+            edit
+          </li>
+        )}
+        {currentUser && (
+          <li className="ml-auto">
+            {" "}
+            <div className="flex items-center gap-2 justify-between">
+              <Image
+                className="rounded-full"
+                src={currentUser?.photoURL}
+                width={50}
+                height={50}
+                alt="Profile image"
+              />
+              <div className="nav-item" onClick={logout}>
+                logout
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        )}
       </ul>
     </nav>
   )
