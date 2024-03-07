@@ -9,27 +9,12 @@ import { FaFire } from "react-icons/fa"
 import { navNames } from "../../../util"
 
 const TopNav = observer(() => {
-  const [currentUser, setCurrentUser] = useState<any>(null)
   const router = useRouter()
-  console.log(currentUser)
-  useEffect(() => {
-    const unSub = onAuthStateChanged(auth, (user) => {
-      console.log(user)
-      if (user) {
-        setCurrentUser(user)
-      } else {
-        setCurrentUser(null)
-
-        router.push(navNames.login)
-      }
-    })
-
-    return () => unSub()
-  }, [router])
 
   const logout = async () => {
     try {
       await signOut(auth)
+      router.push(navNames.login)
 
       console.log("user Logged out")
     } catch (error: any) {
@@ -49,18 +34,18 @@ const TopNav = observer(() => {
         <li className="nav-item " onClick={() => router.push(navNames.about)}>
           about
         </li>
-        {currentUser && (
+        {auth.currentUser && (
           <li className="nav-item " onClick={() => router.push(navNames.edit)}>
             edit
           </li>
         )}
-        {currentUser && (
+        {auth.currentUser && (
           <li className="ml-auto">
             {" "}
             <div className="flex items-center gap-2 justify-between">
               <Image
                 className="rounded-full"
-                src={currentUser?.photoURL}
+                src={auth?.currentUser?.photoURL || ""}
                 width={50}
                 height={50}
                 alt="Profile image"

@@ -26,7 +26,7 @@ const ProtectedRoute: FC<ProtectedRouteProps> = observer(({ children }) => {
         userStore.setUser(user)
       } else {
         userStore.setUser(null)
-        router.push(navNames.login)
+        router.push(navNames.home)
       }
       setIsLoading(false)
     })
