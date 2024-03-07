@@ -10,7 +10,10 @@ import { navNames } from "../../util"
 const HomePage = observer(() => {
   const router = useRouter()
 
-  router.push(navNames.home)
+  useEffect(() => {
+    router.push(navNames.home)
+  }, [])
+
   return <div className="h-screen max- w-screen relative">wait...</div>
 })
 
