@@ -10,7 +10,16 @@ import { navNames } from "../../../util"
 
 const TopNav = observer(() => {
   const router = useRouter()
+  const [isLogged, setIsLogged] = useState(false)
 
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(auth.currentUser)
+      if (auth.currentUser) {
+        setIsLogged(true)
+      }
+    }, 500)
+  }, [])
   const logout = async () => {
     try {
       await signOut(auth)
@@ -34,12 +43,12 @@ const TopNav = observer(() => {
         <li className="nav-item " onClick={() => router.push(navNames.about)}>
           about
         </li>
-        {auth.currentUser && (
+        {isLogged && (
           <li className="nav-item " onClick={() => router.push(navNames.edit)}>
             edit
           </li>
         )}
-        {auth.currentUser && (
+        {isLogged && (
           <li className="ml-auto">
             {" "}
             <div className="flex items-center gap-2 justify-between">
