@@ -7,8 +7,9 @@ import { modals } from "../../../util"
 
 type GalleryProps = {
   withEdit?: boolean
+  data: ImageItem[]
 }
-const Gallery = observer<GalleryProps>(({ withEdit = false }) => {
+const Gallery = observer<GalleryProps>(({ withEdit = false, data }) => {
   const handleClick = (image: ImageItem) => {
     imagesStore.setChosenImage(image)
     if (withEdit) {
@@ -27,7 +28,7 @@ const Gallery = observer<GalleryProps>(({ withEdit = false }) => {
   return (
     <div className="mx-auto  flex justify-center">
       <ul className="flex flex-wrap gap-2  justify-center">
-        {imagesStore.images.map((image, key) => (
+        {data.map((image, key) => (
           <li
             key={key}
             onClick={() => handleClick(image)}
