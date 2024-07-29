@@ -27,7 +27,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <div className=" mb-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4 md:mx-10">
-      {products.slice(0, 1).map((product, index) => (
+      {products.map((product, index) => (
         <ProductCard key={index} product={product} pageName={pageName} />
       ))}
     </div>
