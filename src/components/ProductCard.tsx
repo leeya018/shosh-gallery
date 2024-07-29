@@ -23,6 +23,10 @@ const ProductCard: React.FC<ProductProps> = ({ product, pageName }) => {
 
   console.log({ pageName });
 
+  const firebaseImageUrl =
+    "https://firebasestorage.googleapis.com/v0/b/find-best-deals.appspot.com/o/products%2FIMG_1743.jpg?alt=media&token=85eb519b-d5e1-4b53-a767-97653f943d2d";
+  // const encodedUrl = encodeURIComponent(firebaseImageUrl);
+
   const isExists = cartStore.isItemExists(product);
   const addToCart = (e: any) => {
     e.stopPropagation();
@@ -35,6 +39,9 @@ const ProductCard: React.FC<ProductProps> = ({ product, pageName }) => {
     productStore.setChosenProduct(product);
     ModalStore.openModal(modals.productView);
   };
+  // const encodedUrl = encodeURIComponent(
+  //   "https://firebasestorage.googleapis.com/v0/b/find-best-deals.appspot.com/o/products%2FIMG_1743.jpg?alt=media&token=85eb519b-d5e1-4b53-a767-97653f943d2d"
+  // );
   return (
     <div
       className=" mx-2  my-5 rounded-xl  bg-card-gradient cursor-pointer "
@@ -43,7 +50,9 @@ const ProductCard: React.FC<ProductProps> = ({ product, pageName }) => {
       <div className=" relative w-full h-64">
         <Image
           alt={name + "תמונה של"}
-          src={imageUrl ? imageUrl : "/"}
+          // src={`/api/image-proxy?url=${encodedUrl}`}
+          src={firebaseImageUrl}
+          // src={imageUrl ? imageUrl : "/"}
           layout="fill"
           className=" bg-center object-cover "
         />
