@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    domains: [
+      "firebasestorage.googleapis.com",
+      "shosh-gallery.netlify.app",
+      "localhost",
+    ],
     remotePatterns: [
       {
         protocol: "https",
