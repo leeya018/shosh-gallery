@@ -6,15 +6,16 @@ import productStore from "@/mobx/ProductStore";
 import messageStore from "@/mobx/messageStore";
 import { ModalStore } from "@/mobx/modalStore";
 import { toJS } from "mobx";
+import Image from "next/image";
 import React, { useState } from "react";
 
 const AddProductForm: React.FC = () => {
   const [product, setProduct] = useState<Product>({
-    name: "",
+    name: "pic",
     image: null,
-    price: 0,
+    price: 1,
     currency: "ILS",
-    description: "",
+    description: "pic desc",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -97,6 +98,14 @@ const AddProductForm: React.FC = () => {
           onChange={handleFileChange}
           className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
           required
+        />
+        <Image
+          alt="product image1"
+          // layout="fill"
+          width={100}
+          height={100}
+          className=" bg-center object-cover "
+          src={product.image ? URL.createObjectURL(product.image) : ""}
         />
       </div>
       <div className="mb-4">
