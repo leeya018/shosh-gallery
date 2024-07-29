@@ -37,8 +37,8 @@ class ProductStore {
   }
 }
 
-autorun(() => {
-  console.log(toJS(productStore.products));
-});
+// autorun(() => {
+//   console.log(toJS(productStore.products));
+// });
 const productStore = new ProductStore();
 export default productStore;
