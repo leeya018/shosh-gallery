@@ -1,11 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "firebasestorage.googleapis.com",
-      "shosh-gallery.netlify.app",
-      "localhost",
-    ],
     remotePatterns: [
       {
         protocol: "https",
@@ -23,6 +18,27 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: "/_next/:path*",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*", // Allows all origins
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET,POST,PUT,DELETE,OPTIONS",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value: "X-Requested-With, Content-Type, Authorization",
+          },
+        ],
+      },
+    ];
   },
 };
 
