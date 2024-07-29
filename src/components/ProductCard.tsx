@@ -23,8 +23,8 @@ const ProductCard: React.FC<ProductProps> = ({ product, pageName }) => {
 
   console.log({ pageName });
 
-  const firebaseImageUrl =
-    "https://firebasestorage.googleapis.com/v0/b/find-best-deals.appspot.com/o/products%2FIMG_1743.jpg?alt=media&token=85eb519b-d5e1-4b53-a767-97653f943d2d";
+  // const firebaseImageUrl =
+  //   "https://firebasestorage.googleapis.com/v0/b/find-best-deals.appspot.com/o/products%2FIMG_1743.jpg?alt=media&token=85eb519b-d5e1-4b53-a767-97653f943d2d";
   // const encodedUrl = encodeURIComponent(firebaseImageUrl);
 
   const isExists = cartStore.isItemExists(product);
@@ -51,8 +51,8 @@ const ProductCard: React.FC<ProductProps> = ({ product, pageName }) => {
         <Image
           alt={name + "תמונה של"}
           // src={`/api/image-proxy?url=${encodedUrl}`}
-          src={firebaseImageUrl}
-          // src={imageUrl ? imageUrl : "/"}
+          // src={firebaseImageUrl}
+          src={imageUrl ? imageUrl : "/"}
           layout="fill"
           className=" bg-center object-cover "
         />
