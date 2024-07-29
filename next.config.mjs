@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "https://shosh-gallery.netlify.app",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        pathname: "/**",
+      },
     ],
   },
 };
