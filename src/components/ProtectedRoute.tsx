@@ -14,7 +14,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
     if (!authStore.isLoggedIn) {
       router.push("/");
     }
-  }, [authStore.isLoggedIn, router]);
+  }, [router]);
 
   if (!authStore.isLoggedIn) {
     return <div>Loading...</div>;

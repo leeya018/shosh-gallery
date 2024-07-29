@@ -76,7 +76,7 @@ const ProductCardView: React.FC<ProductCardView> = ({ pageName }) => {
           {name}
         </h3>
         <h3 className="text-lg font-semibold mb-2 whitespace-normal  ">
-          מחיר : {price} + " " + {currency}
+          מחיר : {price} {currency}
         </h3>
         <h3 className="text-lg font-semibold mb-2 whitespace-normal  ">
           {description}
