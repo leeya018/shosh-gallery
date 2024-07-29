@@ -22,10 +22,11 @@ const firebaseProdConfig = {
   appId: process.env.NEXT_PUBLIC_APP_ID_PROD,
 };
 
-const firebaseConfig =
-  process.env.NODE_ENV === "development"
-    ? firebaseDevConfig
-    : firebaseProdConfig;
+// const firebaseConfig =
+//   process.env.NODE_ENV === "development"
+//     ? firebaseDevConfig
+//     : firebaseProdConfig;
+const firebaseConfig = firebaseDevConfig;
 
 // console.log({ firebaseConfig })
 const app = initializeApp(firebaseConfig);
